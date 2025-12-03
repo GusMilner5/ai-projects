@@ -1,0 +1,35 @@
+import "dotenv/config";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+
+import {
+  generateLessonPlanName,
+  generateLessonPlanDescription,
+  generateLessonPlanSchema,
+  generateLessonPlanHandler,
+} from "./tools/generateLessonPlan";
+
+const mcpServer = new McpServer({
+  name: "lesson-plan-mcp-server",
+  version: "0.0.1",
+});
+
+mcpServer.registerTool(
+  generateLessonPlanName,
+  {
+    description: generateLessonPlanDescription,
+    inputSchema: generateLessonPlanSchema.shape,
+  },
+  generateLessonPlanHandler
+);
+
+async function main() {
+    const transport = new StdioServerTransport();
+    await mcpServer.connect(transport);
+    console.log('MCP server is running...');
+}
+
+main().catch(error => {
+    console.error('Server error:', error);
+    process.exit(1);
+});
