@@ -5,9 +5,9 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import {
   generateLessonPlanName,
   generateLessonPlanDescription,
-  generateLessonPlanSchema,
   generateLessonPlanHandler,
 } from "./tools/generateLessonPlan";
+import { lessonPlanInputSchema } from "./schemas/lessonPlanInput";
 
 const mcpServer = new McpServer({
   name: "lesson-plan-mcp-server",
@@ -18,7 +18,7 @@ mcpServer.registerTool(
   generateLessonPlanName,
   {
     description: generateLessonPlanDescription,
-    inputSchema: generateLessonPlanSchema.shape,
+    inputSchema: lessonPlanInputSchema,
   },
   generateLessonPlanHandler
 );

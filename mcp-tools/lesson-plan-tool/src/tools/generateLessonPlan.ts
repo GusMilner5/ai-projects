@@ -7,8 +7,6 @@ export const generateLessonPlanName = "generate_lesson_plan";
 export const generateLessonPlanDescription =
   "Generate a basic lesson plan structure for a given subject and grade level.";
 
-export const generateLessonPlanSchema = lessonPlanInputSchema;
-
 export const generateLessonPlanHandler = async (args: LessonPlanInput) => {
   const { subject, gradeLevel, durationMinutes } = args;
 
