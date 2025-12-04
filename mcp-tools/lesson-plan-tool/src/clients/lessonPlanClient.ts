@@ -44,11 +44,13 @@ async function main() {
         subject: 'Mathematics',
         gradeLevel: '3rd Grade',
         durationMinutes: 45,
+        // style: 'detailed',
       },
     });
 
     console.log('Tool call result:');
     console.log('=================');
+
 
     if (result.content) {
       console.log(JSON.stringify(result.content, null, 2));
