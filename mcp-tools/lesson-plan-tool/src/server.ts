@@ -7,7 +7,9 @@ import {
   generateLessonPlanDescription,
   generateLessonPlanHandler,
 } from './tools/generateLessonPlan';
-import { lessonPlanInputSchema } from './schemas/lessonPlanInput';
+import { lessonPlanInputSchema } from './schemas/inputs/lessonPlanInput';
+import { generateRubricDescription, generateRubricHandler, generateRubricName } from './tools/generateRubric';
+import { rubricInputSchema } from './schemas/inputs/rubricInput';
 
 const mcpServer = new McpServer({
   name: 'lesson-plan-mcp-server',
@@ -22,6 +24,15 @@ mcpServer.registerTool(
   },
   generateLessonPlanHandler
 );
+
+mcpServer.registerTool(
+    generateRubricName,
+    {
+      description: generateRubricDescription,
+      inputSchema: rubricInputSchema,
+    },
+    generateRubricHandler
+  );
 
 async function main() {
   const transport = new StdioServerTransport();

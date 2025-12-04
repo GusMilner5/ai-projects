@@ -1,6 +1,6 @@
 
 import { openai } from "../../openai/openAiClient";
-import { LessonPlanInput, lessonPlanInputSchema } from "../../schemas/lessonPlanInput";
+import { LessonPlanInput, lessonPlanInputSchema } from "../../schemas/inputs/lessonPlanInput";
 import { LessonPlanOutput, lessonPlanOutputSchema } from "../../tools/generateLessonPlan";
 import z from "zod";
 

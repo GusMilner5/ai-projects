@@ -1,6 +1,5 @@
 import z from 'zod';
-import { lessonPlanInputSchema, type LessonPlanInput } from '../schemas/lessonPlanInput';
-import { openai } from '../openai/openAiClient';
+import { lessonPlanInputSchema, type LessonPlanInput } from '../schemas/inputs/lessonPlanInput';
 import { generateLessonPlanModel } from '../ai/model/generateLessonPlanModel';
 import { evaluateLessonPlan } from '../ai/evaluation/evaluateLesonPlan';
 
